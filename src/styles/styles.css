@@ -1,0 +1,75 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.MainContainer {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.MainContainer #Header {
+  background: #2d2d2d;
+  color: #ffffff;
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.MainContainer .HomeBody {
+  background: #3B3A3A;
+  width: 100%;
+  height: 100%;
+  padding: 70px 0;
+}
+.MainContainer .HomeBody .topics_title {
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+}
+.MainContainer .HomeBody .topics_title h2 {
+  color: #ffffff;
+}
+.MainContainer .Topics {
+  padding: 20px 0;
+  justify-items: center;
+  display: grid;
+  grid-template-columns: 33% 33% 34%;
+}
+.MainContainer .Topics .Topic {
+  width: 80%;
+  display: grid;
+  height: 250px;
+  grid-template-rows: 200px 50px;
+  justify-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.MainContainer .Topics .Topic .PhotoContent {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.MainContainer .Topics .Topic .PhotoContent img {
+  display: block;
+  height: 180px;
+  border-radius: 10px;
+}
+.MainContainer .Topics .Topic div {
+  display: block;
+  width: 100%;
+  background: #2d2d2d;
+  border-radius: 0 0 10px 10px;
+}
+.MainContainer .Topics .Topic div h3 {
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+/*# sourceMappingURL=styles.css.map */
