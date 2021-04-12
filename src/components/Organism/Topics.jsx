@@ -2,17 +2,18 @@ import React from 'react';
 import Anime from '../../assets/imgs/animeLogo.png';
 import Yugioh from '../../assets/imgs/YU-GI-OH.png';
 import Series from '../../assets/imgs/Series.png';
+import { withRouter } from 'react-router';
 
-const Topics = () => {
-    const handleClick = ( link ) => {
-        console.log(link)
+const Topics = ({ history }) => {
+    const handleClick = ( type, title ) => {
+        history.push(`/services/${ type }/${ title }`);
     }
     return (
         <div className="Topics">
             <div 
                 className="Topic"
                 onClick = {
-                    () => handleClick( 'Anime' )
+                    () => handleClick( 'Anime', 'ANIME' )
                 }
             >
                 <div className = "PhotoContent">
@@ -25,7 +26,7 @@ const Topics = () => {
             <div 
                 className="Topic"
                 onClick = {
-                    () => handleClick( 'Series' )
+                    () => handleClick( 'Series', 'SERIES' )
                 }
             >
                 <div className = "PhotoContent">
@@ -38,7 +39,7 @@ const Topics = () => {
             <div 
                 className="Topic"
                 onClick = {
-                    () => handleClick( 'Yugioh' )
+                    () => handleClick( 'Yugioh', 'YU-GI-OH!' )
                 }
             >
                 <div className = "PhotoContent">
@@ -51,4 +52,4 @@ const Topics = () => {
         </div>
     )
 }
-export default Topics;
+export default withRouter( Topics );
