@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const YugiohServices = () => {
     return (
         <div className = "services">
-            <h2>Calculadora</h2>
+            <Link to = "/yugioh/lp">Calculadora</Link>
         </div>
     )
 }

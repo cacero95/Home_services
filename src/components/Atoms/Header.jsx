@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const getDay = () => {
     const time = new Date();
@@ -13,17 +13,12 @@ const getDay = () => {
     ]
     return `${ days[ time.getDay() ] } - ${ time.getHours() }:${ time.getMinutes() }:${ time.getSeconds() }:${ time.getMilliseconds() }`;
 }
-
-const Header = () => {
-    const [ time, setTime ] = useState( getDay() )
-    setTimeout(() => {
-        setTime( getDay() );
-    }, 1000);
+const Header = () => {   
     return (
         <div id = "Header">
             <div>
                 <h2>
-                    Bienvenido - { time }
+                    Bienvenido - { getDay() }
                 </h2>
             </div>
         </div>
