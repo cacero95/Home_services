@@ -15,6 +15,7 @@ const LpPoints = ({ number, score }) => {
     const handleClick = () => {
         setActivate( true );
     }
+    console.log( points );
     return (
         <div 
             className = "playerPoints"

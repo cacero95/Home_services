@@ -26,7 +26,8 @@ const Calculator = ({ points, setPoints }) => {
 
     const handleOperator = ( e ) => {
         const value = e.target.value;
-        if ( value === '+' || value === '-' ) {
+        console.log( value );
+        if ( value === '+' || value === '-' || value === '' ) {
             setPoints({
                 ...points,
                 operator: value
