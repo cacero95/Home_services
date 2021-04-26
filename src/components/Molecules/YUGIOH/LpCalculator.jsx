@@ -1,78 +1,54 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import YuHeader from './Header/YuHeader';
-import SweetAlert from 'react-bootstrap-sweetalert';
 import LpPoints from './Body/LpPoints';
-
+import YuModal from './Atoms/YuModal';
+import PlayerModal from './Atoms/PlayerModal';
 
 const LpCalculator = () => {
 
-    const [ lpState, setlpState ] = useState({
+    const [ lpState, setlpState ] = useState ({
         lpPoints: 8000,
-        lpRequest: true,
-        playersRequest: true,
-        numberPlayers: 2
+        numberPlayers: 2,
+        activate_settings: false
     });
 
-    const buildLp = () => {
-        return [ ...Array( lpState.numberPlayers ).keys() ].map(( index ) => {
-            return (
-                <LpPoints
-                    number = { index }
-                    score = { lpState.lpPoints }
-                />
-            )
-        })
+    const handleChange = ( event ) => {
+        // delete the decimal to aproximate the number
+        const value = parseInt( event.target.value );
+        setlpState({
+            ...lpState,
+            numberPlayers: value % 1 === 0 
+            ? value : Math.floor( value )
+        });
     }
 
     return (
         <div className="YuContainer">
             <YuHeader />
-
-            {
-                !lpState.playersRequest && !lpState.lpRequest ? (
-                    <div className="YuBody">
-                        { buildLp() }
-                    </div>
-                ) : (
-                    <Fragment></Fragment>
-                )
-            }
-
-            <SweetAlert
-                show = { lpState.lpRequest }
-                title = "Puntos de vida?"
-                type = "input"
-                inputType = "number"
-                confirmBtnText = "Confirmar"
-                confirmBtnCssClass = "btn_lp_confirm"
-                onConfirm = {
-                    inputValue => {
-                        inputValue = parseInt( inputValue );
-                        setlpState({
-                            ...lpState,
-                            lpPoints: inputValue <= 0 ? 8000 : inputValue,
-                            lpRequest: false
-                        })
-                    }
+            <div className="YuBody">
+                {
+                    [ ...Array( lpState.numberPlayers ).keys() ].map(( index ) => {
+                        return (
+                            <LpPoints
+                                key = { index }
+                                number = { index }
+                                score = { lpState.lpPoints }
+                            />
+                        )
+                    })
                 }
-            />
-
-            <SweetAlert
-                show = { lpState.playersRequest }
-                title = "Cuantos jugadores?"
-                type = "input"
-                inputType = "number"
-                confirmBtnText = "Confirmar"
-                confirmBtnCssClass = "btn_lp_confirm"
-                onConfirm = {
-                    inputValue => {
-                        inputValue = parseInt( inputValue );
-                        setlpState({
-                            ...lpState,
-                            playersRequest: false,
-                            numberPlayers: inputValue < 2 ? 2 : inputValue
-                        })
-                    }
+            </div>
+            <YuModal
+                activate_settings = { lpState.activate_settings }
+                handleClose = {
+                    () => setlpState({
+                        ...lpState, activate_settings: false
+                    })
+                }
+                content = {
+                    <PlayerModal
+                        handleChange = { handleChange }
+                    /> 
                 }
             />
         </div>

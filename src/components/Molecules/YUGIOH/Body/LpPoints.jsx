@@ -1,16 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Background from '../../../../assets/imgs/Tefnuif_dragon_of_galaxy.png';
+import YuModal from '../Atoms/YuModal';
+import Calculator from './Calculator';
 
 const LpPoints = ({ number, score }) => {
-    const [ player, setplayer ] = useState( number );
-    const [ points, setPoints ] = useState(0);
-    useEffect(() => {
-        setPoints( score );
-    }, [ score ])
+
+    const [ points, setPoints ] = useState ({
+        lp: score,
+        operator: '',
+        digit: ''
+    });
+    const [ activateModal, setActivate ] = useState( false );
+
+    const handleClick = () => {
+        setActivate( true );
+    }
     return (
-        <div className = "playerPoints">
+        <div 
+            className = "playerPoints"
+            style = {{ backgroundImage: `url(${ Background })` }}
+            onClick = { handleClick }
+        >
             <span>
-                { points }
+                { points.lp }
             </span>
+            <YuModal
+                activate_settings = { activateModal }
+                handleClose = {
+                    () => setActivate ( false )
+                }
+                content = { 
+                    <Calculator
+                        points = { points }
+                        setPoints = { setPoints }
+                    /> 
+                }
+            />
         </div>
     )
 }
