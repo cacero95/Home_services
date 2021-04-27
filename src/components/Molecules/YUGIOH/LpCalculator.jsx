@@ -22,6 +22,12 @@ const LpCalculator = () => {
         });
     }
 
+    const closeModal = () => {
+        setlpState({
+            ...lpState, activate_settings: false
+        })
+    }
+
     return (
         <div className="YuContainer">
             <YuHeader />
@@ -40,11 +46,7 @@ const LpCalculator = () => {
             </div>
             <YuModal
                 activate_settings = { lpState.activate_settings }
-                handleClose = {
-                    () => setlpState({
-                        ...lpState, activate_settings: false
-                    })
-                }
+                handleClose = { closeModal }
                 content = {
                     <PlayerModal
                         handleChange = { handleChange }

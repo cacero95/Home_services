@@ -3,40 +3,54 @@ import Background from '../../../../assets/imgs/Tefnuif_dragon_of_galaxy.png';
 import YuModal from '../Atoms/YuModal';
 import Calculator from './Calculator';
 
+
+let tick = 'available';
 const LpPoints = ({ number, score }) => {
 
+    const myRef = React.createRef();
     const [ points, setPoints ] = useState ({
         lp: score,
-        operator: '',
+        operator: '-',
         digit: ''
     });
     const [ activateModal, setActivate ] = useState( false );
 
     const handleClick = () => {
-        setActivate( true );
+        if ( tick === 'available' ) {
+            setActivate( true );
+        }
+        tick = 'available';
     }
-    console.log( points );
+    const handleClose = () => {
+        tick = 'block'
+        setActivate( false );
+    }
+    
     return (
         <div 
             className = "playerPoints"
+            ref = { myRef }
             style = {{ backgroundImage: `url(${ Background })` }}
-            onClick = { handleClick }
+            onClick = {
+                () => handleClick()
+            }
         >
             <span>
                 { points.lp }
             </span>
+
             <YuModal
                 activate_settings = { activateModal }
-                handleClose = {
-                    () => setActivate ( false )
-                }
-                content = { 
+                handleClose = { handleClose }
+                content = {
                     <Calculator
                         points = { points }
                         setPoints = { setPoints }
-                    /> 
+                    />
                 }
             />
+
+
         </div>
     )
 }

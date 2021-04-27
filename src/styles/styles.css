@@ -168,4 +168,108 @@
   padding-bottom: 20px;
 }
 
+.ModalContainer {
+  background: url("../assets/imgs/ModalBackground.jpg");
+  background-size: cover;
+  background-position: center center;
+  font-family: Arial, Helvetica, sans-serif;
+  outline: none;
+  width: 60%;
+  height: 50%;
+}
+.ModalContainer .CloseModal {
+  display: flex;
+  justify-content: flex-end;
+}
+.ModalContainer .CloseModal span {
+  font-size: 20px;
+  color: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+}
+.ModalContainer .Calculator {
+  padding: 20px;
+  height: 200px;
+}
+.ModalContainer .Calculator .Calculator_screen {
+  display: grid;
+  grid-template-columns: 33% 33% 34%;
+  align-items: center;
+}
+.ModalContainer .Calculator .Calculator_screen .CalculatorOperator {
+  width: 95%;
+  height: 40px;
+  border: 1px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transition-duration: 3s;
+  cursor: pointer;
+}
+.ModalContainer .Calculator .Calculator_screen .CalculatorOperator svg, .ModalContainer .Calculator .Calculator_screen .CalculatorOperator img {
+  fill: #ffffff;
+  width: 30px;
+  transition-duration: 3s;
+}
+.ModalContainer .Calculator .Calculator_screen .Lp {
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px;
+  text-shadow: 1px 1px 2px #000000;
+}
+.ModalContainer .Calculator .Calculator_screen input {
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  width: 70%;
+  font-size: 20px;
+  background: none;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  text-shadow: 1px 1px 2px #000000;
+}
+.ModalContainer .Calculator .Calculator_screen .CalculatorOperatorMinus {
+  background: url("../assets/imgs/minus.svg");
+}
+.ModalContainer .Calculator .Calculator_screen .CalculatorOperatorPlus {
+  background: url("../assets/imgs/add.svg");
+}
+.ModalContainer .Calculator .CalculatorKeys {
+  padding: 10px 0;
+}
+.ModalContainer .Calculator .CalculatorKeys .resultKey {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  width: 90%;
+  margin: auto;
+  cursor: pointer;
+}
+.ModalContainer .Calculator .CalculatorKeys .resultKey span {
+  font-size: 20px;
+  font-weight: bold;
+}
+.ModalContainer .Calculator .CalculatorKeys .gridKeys {
+  display: grid;
+  grid-template-columns: 33% 33% 34%;
+  justify-items: center;
+  overflow-y: scroll;
+  padding: 10px;
+}
+.ModalContainer .Calculator .CalculatorKeys .gridKeys span {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid #ffffff;
+  width: 80%;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
 /*# sourceMappingURL=styles.css.map */
